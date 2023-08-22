@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/pdf-generate', [PdfController::class, 'pdfView'])->name('pdf.generate');
+Route::post('/pdf-generate', [PdfController::class, 'addImageToPdf'])->name('pdf.addImage');
 
-Route::get('{any}', function () {
+/*Route::get('{any}', function () {
     return view('layouts.app');
-})->where('any', '.*');
+})->where('any', '.*');*/
